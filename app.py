@@ -12,6 +12,7 @@ app = Flask(__name__)
 client = MongoClient(os.getenv("MONGO_URI"))
 db = client["assignment_db"]
 collection = db["students"]
+todo_collection = db["todo_items"]
 
 
 # Home Page (Form)
@@ -32,7 +33,6 @@ def api():
 # Assignment 2
 @app.route("/submit", methods=["POST"])
 def submit():
-
     try:
         name = request.form["name"]
         email = request.form["email"]
@@ -45,8 +45,25 @@ def submit():
         return redirect(url_for("success"))
 
     except Exception as e:
-
         return render_template("index.html", error=str(e))
+
+
+# Assignment 3
+@app.route("/submittodoitem", methods=["POST"])
+def submit_todo_item():
+    try:
+        item_name = request.form["itemName"]
+        item_description = request.form["itemDescription"]
+
+        todo_collection.insert_one({
+            "itemName": item_name,
+            "itemDescription": item_description
+        })
+
+        return "Todo Item Saved Successfully"
+
+    except Exception as e:
+        return str(e), 500
 
 
 @app.route("/success")
