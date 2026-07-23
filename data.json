@@ -12,6 +12,13 @@
     {
         "name": "Vishwas",
         "age": 27,
-        "city": "Agra"
+        "city": "Agra",
+        "course": "DevOps",
+        "status": "Updated in vish56_new branch"
+    },
+    {
+        "name": "Ananya",
+        "age": 25,
+        "city": "Bengaluru"
     }
 ]
