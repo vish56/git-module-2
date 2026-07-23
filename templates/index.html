@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Student Form</title>
+    <title>Student Form & To-Do</title>
 </head>
 
 <body>
@@ -24,6 +24,22 @@
 {% if error %}
 <p style="color:red;">{{ error }}</p>
 {% endif %}
+
+<hr>
+
+<h2>To-Do Form</h2>
+
+<form action="/submittodoitem" method="POST">
+
+<label>Item Name</label><br>
+<input type="text" name="itemName" required><br><br>
+
+<label>Item Description</label><br>
+<textarea name="itemDescription" rows="4" cols="40" required></textarea><br><br>
+
+<button type="submit">Submit To-Do</button>
+
+</form>
 
 </body>
 
